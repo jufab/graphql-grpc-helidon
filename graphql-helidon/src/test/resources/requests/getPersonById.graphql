@@ -1,0 +1,8 @@
+query personById($id: ID!) {
+    personById(id: $id) {
+        id
+        address {
+            id
+        }
+    }
+}

@@ -1,0 +1,12 @@
+db:
+  source: jdbc
+  connection:
+    #url: jdbc:h2:tcp://localhost:1521/test
+    url: jdbc:h2:mem:test
+    username: sa
+    password:
+    poolName: h2
+    helidon:
+      pool-metrics:
+        enabled: true
+        name-prefix: "hikari."

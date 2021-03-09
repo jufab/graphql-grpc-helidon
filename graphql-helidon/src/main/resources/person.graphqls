@@ -1,0 +1,32 @@
+type Person {
+    id: ID!
+    firstname: String!
+    lastname: String!
+    age: Int
+    gender: Gender!
+    address: Address
+}
+
+enum Gender {
+    WOMAN,
+    MAN
+}
+
+type Address {
+    id: ID!
+    street: String!
+    zipCode: String!
+    city: String!
+}
+
+type Query {
+    personById(id: ID!): Person
+    personsByFirstName(firstname: String!): [Person]
+    persons:[Person]
+}
+
+type Mutation {
+    createPersonWithAddress(firstname: String!, lastname: String!, age: Int, gender: Gender, street: String!, zipCode: String!, city: String!):Person
+    createPerson(firstname: String!, lastname: String!, age: Int, gender: Gender, idAddress: ID!):Person
+    createAddress(street: String!, zipCode: String!, city: String!): Address
+}

@@ -1,0 +1,8 @@
+query personsByFirstName($firstname: String!) {
+    personsByFirstName(firstname: $firstname) {
+        id
+        address {
+            id
+        }
+    }
+}

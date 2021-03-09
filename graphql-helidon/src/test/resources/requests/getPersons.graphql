@@ -1,0 +1,8 @@
+query persons {
+    persons {
+        id,
+        address {
+            id
+        }
+    }
+}

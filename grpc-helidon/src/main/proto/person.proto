@@ -1,0 +1,77 @@
+syntax = "proto3";
+option java_package = "fr.jufab.grpc.proto";
+option java_multiple_files = true;
+option java_generic_services = true;
+option java_outer_classname = "Helidon";
+
+enum Gender {
+  WOMAN = 0;
+  MAN = 1;
+}
+
+message Person {
+  int32 id = 1;
+  string firstname = 2;
+  string lastname = 3;
+  int32 age = 4;
+  Gender gender = 5;
+  Address address = 6;
+}
+
+message Address {
+  int32 id = 1;
+  string street = 2;
+  string zipCode = 3;
+  string city = 4;
+}
+
+message Persons {
+  repeated Person persons=1;
+}
+
+message QueryPerson {
+  int32 id=1;
+  string firstname=2;
+}
+
+message PersonWithAddressToSave {
+  string firstname = 1;
+  string lastname = 2;
+  int32 age = 3;
+  Gender gender = 4;
+  string street = 5;
+  string zipCode = 6;
+  string city = 7;
+}
+
+message PersonToSave{
+  string firstname = 1;
+  string lastname = 2;
+  int32 age = 3;
+  Gender gender = 4;
+  int32 idAddress = 5;
+}
+
+message AddressToSave{
+  string street = 1;
+  string zipCode = 2;
+  string city = 3;
+}
+
+message QueryAddress {
+  int32 id = 1;
+}
+
+service PersonService {
+  rpc persons(QueryPerson) returns (Persons);
+  rpc personById(QueryPerson) returns (Person);
+  rpc personsByFirstName(QueryPerson) returns (Persons);
+
+  rpc createPersonWithAddress(PersonWithAddressToSave) returns (Person);
+  rpc createPerson(PersonToSave) returns (Person);
+}
+
+service AddressService {
+  rpc createAddress(AddressToSave) returns (Address);
+  rpc addressById(QueryAddress) returns (Address);
+}

@@ -1,0 +1,15 @@
+mutation {
+    createPersonWithAddress(firstname: "Test", lastname: "Tester", age: 40, gender: MAN, street: "my street", zipCode: "33000", city: "BORDEAUX") {
+        id
+        firstname
+        lastname
+        age
+        gender
+        address {
+            id
+            street
+            city
+            zipCode
+        }
+    }
+}
