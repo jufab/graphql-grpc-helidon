@@ -1,6 +1,6 @@
 # GraphQL or gRPC in Java
 
-This article presents GraphQL and gRPC implemented in Java.
+This article presents GraphQL and gRPC implemented with Java.
 
 With the same use case, I'm going to show you how to expose and to implement these protocols.
 
@@ -9,6 +9,23 @@ I use a simple use case but not just a one table use case...Ok, just a 2 tables 
 To make this article, I use [Helidon](https://helidon.io/).
 
 _Why Helidon?_ **Why not!** ...seriously, because this framework offers the possibility to implement these protocols ( _and of course, for me, to discover this framework ;-)_ )
+
+## Table of contents
+
+- [About Helidon](#about-helidon)
+- [Use case](#use-case)
+  - [Definition](#definition)
+  - [Helidon DB Client](#helidon-db-client)
+- [Init Project](#init-project)
+- [GraphQL](#graphql)
+  - [Schema](#schema)
+  - [Maven](#maven)
+  - [Implementation](#implementation)
+- [gRPC](#grpc)
+  - [Protocol buffers](#protocol-buffers)
+  - [Maven](#maven)
+  - [Implementation](#implementation)
+- [Conclusion](#conclusion)
 
 ## About Helidon
 
