@@ -83,7 +83,7 @@ For this article, I used a JDBC. So I added these dependencies :
 ```
 All the database implementation is [here in this maven module](/db-helidon)
 
-It contains 2 importants files in [resources](/db-helidon/src/main/resources/) : 
+It contains 2 important files in [resources](/db-helidon/src/main/resources/) : 
 - [db.yaml](/db-helidon/src/main/resources/db.yaml) : contains configuration for h2 Database
 - [statements.yaml](/db-helidon/src/main/resources/statements.yaml) : contains all statements like tables creations or sequences...
 
@@ -113,7 +113,7 @@ mvn -U archetype:generate -DinteractiveMode=false \
     -Dpackage=fr.jufab.grpc
 ```
 
-_I transformed projects into 3 modules maven and delete all the GraalVM or Docker builder for reused database in graphQL or gRPC module._
+_I transformed projects into 3 modules maven and deleted all the GraalVM or Docker builder for reused database in graphQL or gRPC module._
 
 Or, you can use helidon cli to manage your project.
 https://helidon.io/docs/latest/#/about/05_cli
