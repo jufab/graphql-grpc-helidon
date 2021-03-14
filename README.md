@@ -575,7 +575,7 @@ That's it for gRPC.
 
 GraphQL and gRPC offer a same approach : use a schema and generate resources from description. 
 
-GraphQL is an HTTP protocol with REST definition. So you can access to this resource with any language who accept HTTP request.
+GraphQL is an HTTP protocol with schema definition. So you can access to this resource with any language who accept HTTP request.
 
 gRPC communicates over his protocol (HTTP/2) and you need to generate your service from the protobuf.
 
