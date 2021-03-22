@@ -45,9 +45,9 @@ _Why Helidon?_ **Why not!** ...seriously, because this framework offers the poss
     - CDI, JAX-RS, JSON-P/B
     - [More information here](https://helidon.io/docs/latest/#/mp/guides/02_quickstart)
 
-In this 2 versions, Helidon offers a lot of facilities around GraphQL or gRPC implementations (that's a good reason to use it for this article)
+In these 2 versions, Helidon offers a lot of facilities around GraphQL or gRPC implementations (that's a good reason to use it for this article)
 
-There is a lot of others possibilities like reactive streams, reactive messaging or predefined health-check or metrics...
+There is a lot of other possibilities like reactive streams, reactive messaging or predefined health-check or metrics...
 
 And gives facility to build it with docker or GraalVM and to deploy it with Kubernetes.
 
@@ -85,7 +85,7 @@ All the database implementation is [here in this maven module](/db-helidon)
 
 It contains 2 important files in [resources](/db-helidon/src/main/resources/) : 
 - [db.yaml](/db-helidon/src/main/resources/db.yaml) : contains configuration for h2 Database
-- [statements.yaml](/db-helidon/src/main/resources/statements.yaml) : contains all statements like tables creations or sequences...
+- [statements.yaml](/db-helidon/src/main/resources/statements.yaml) : contains all statements like tables creation or sequences...
 
 ## Init Project
 
@@ -113,7 +113,7 @@ mvn -U archetype:generate -DinteractiveMode=false \
     -Dpackage=fr.jufab.grpc
 ```
 
-_I transformed projects into 3 modules maven and deleted all the GraalVM or Docker builder for reused database in graphQL or gRPC module._
+_I transformed projects into 3 maven modules and deleted all the GraalVM or Docker builder for reused database in graphQL or gRPC module._
 
 Or, you can use helidon cli to manage your project.
 https://helidon.io/docs/latest/#/about/05_cli
@@ -121,18 +121,18 @@ https://helidon.io/docs/latest/#/about/05_cli
 
 ## GraphQL
 
-So now, talk about GraphQL.
+So now, let's talk about GraphQL.
 
-GraphQL is a query language and operate on a single endpoint. it talks with JSON language. It defined with a schema, described valid attributes, operations, etc...
+GraphQL is a query language and operates on a single endpoint. it talks with JSON language. It defines with a schema, describes valid attributes, operations, etc...
 And GraphQL is a [specification](https://spec.graphql.org/)
 
 ### Schema
 
-To define GraphQL, use a schema with this information : 
+To define GraphQL, we need to use a schema with this information : 
 - Object : composition of an object response
 - Query : query to request objects or array's object.
 - Mutation : to save/modify objects.
-- Subscription : establish a bi-directional communication channel using WebSocket
+- Subscription : to establish a bi-directional communication channel using WebSocket
 
 With the use case, the schema, [available here](graphql-helidon/src/main/resources/person.graphqls), is : 
 
@@ -178,7 +178,7 @@ In helidon SE, there is a facility to use GraphQL with a helidon GraphQL library
 
 [_More information about this integration in the documentation_](https://helidon.io/docs/latest/#/se/graphql/01_introduction)
 
-**For the moment, This feature is experimental...but it works for this project :)**
+**For the moment, this feature is experimental...but it works for this project :)**
 
 To insert GraphQL in the project, I added the dependency in the [pom.xml](graphql-helidon/pom.xml) file
 
@@ -189,7 +189,7 @@ To insert GraphQL in the project, I added the dependency in the [pom.xml](graphq
 </dependency>
 ```
 
-This dependency use [GraphQL java version 15.0](https://www.graphql-java.com/).
+This dependency uses [GraphQL java version 15.0](https://www.graphql-java.com/).
 
 ### Implementation
 
@@ -229,7 +229,7 @@ private static GraphQLSchema buildSchema(DbClient dbClient) {
         buildRuntimeWiring(dbClient));
   }
 ```
-it needs:
+it requires:
 
 * schema : person.graphqls
 * parser : to instantiate a typeDefinitionRegistry
@@ -260,15 +260,15 @@ private static RuntimeWiring buildRuntimeWiring(DbClient dbClient) {
 }
 ```
 
-There is all Query or Mutation in this method and all of them was link with a DataFetcher
+There are all Query or Mutation in this method and all of them are link with a DataFetcher
 
 #### DataFetcher
 
-All Objects will be associate to a _DataFetcher_ object. DataFetcher has the responsibility to load objects for Query or to save object for Mutation.
+All Objects will be associated to a _DataFetcher_ object. DataFetcher has the responsibility to load objects for Query or to save objects for Mutation.
 
 How it works : 
 
-You define a _DataFetcher_ with a _DataFetchingEnvironment_ object. this object contains all arguments or fields to be fetched.
+You define a _DataFetcher_ with a _DataFetchingEnvironment_ object. This object contains all arguments or fields to be fetched.
 
 like this ([PersonDataFetcher](/graphql-helidon/src/main/java/fr/jufab/graphql/datafetcher/PersonDataFetcher.java)): 
 
@@ -298,15 +298,15 @@ And that's it for GraphQL...
 
 ## gRPC
 
-gRPC help you to build web services. It's cross-languages but this project is a Java project so... :)
+gRPC helps you to build web services. It's cross-language but this project is a Java project so... :)
 
-To define and describe service, gRPC uses a simple definition file and use protocol buffers format.
+To define and describe service, gRPC uses a simple definition file and uses protocol buffers format.
 
 _For more informations : https://grpc.io/_
 
 ### Protocol buffers
 
-gRPC use protocol buffers : https://developers.google.com/protocol-buffers
+gRPC uses protocol buffers : https://developers.google.com/protocol-buffers
 
 Protocol buffers is a language for serializing structured data.
 
@@ -454,7 +454,7 @@ All classes are generated in "generated-sources".
 ### Implementation
 #### Server
 
-To start gRPC server, Helidon offer a specific server for that.
+To start gRPC server, Helidon offers a specific server on this purpose.
 
 You need to start a GrpcServer like this
 
@@ -482,9 +482,9 @@ _[You can see example here](grpc-helidon/src/main/resources/server.yaml)_
 
 You can see in server, the service registered "PersonServiceGrpc" or "AddressServiceGrpc".
 
-This 2 services available [here](grpc-helidon/src/main/java/fr/jufab/grpc/service/PersonGrpcService.java) and [here](grpc-helidon/src/main/java/fr/jufab/grpc/service/AddressGrpcService.java)
+These 2 services available [here](grpc-helidon/src/main/java/fr/jufab/grpc/service/PersonGrpcService.java) and [here](grpc-helidon/src/main/java/fr/jufab/grpc/service/AddressGrpcService.java)
 
-This services implements service supplied by Protobuf generated classes. So, in "PersonGrpcService", this class implements "PersonServiceGrpc.PersonServiceImplBase".
+These services implement service supplied by Protobuf generated classes. So, in "PersonGrpcService", this class implements "PersonServiceGrpc.PersonServiceImplBase".
 
 By default, you can't see this class "PersonServiceGrpc" because you need to generate class with the protobuf file. Why my package is in "fr.jufab.grpc.proto"? Because I used an option in protobuf :
 
@@ -549,7 +549,7 @@ public static abstract class PersonServiceImplBase implements io.grpc.BindableSe
 }
 ```
 
-Now, just implements this methods with your repository or DB access.
+Now, just implements these methods with your repository or DB access.
 
 For method "persons" in [PersonGrpcService](grpc-helidon/src/main/java/fr/jufab/grpc/service/PersonGrpcService.java), I implemented it like that : 
 
@@ -573,15 +573,15 @@ That's it for gRPC.
 
 ## Conclusion
 
-GraphQL and gRPC offer a same approach : use a schema and generate resources from description. 
+GraphQL and gRPC offer a same approach : to use a schema and to generate resources from description. 
 
-GraphQL is an HTTP protocol with schema definition. So you can access to this resource with any language who accept HTTP request.
+GraphQL is an HTTP protocol with schema definition. So you can access to this resource with any language who accepts HTTP request.
 
 gRPC communicates over his protocol (HTTP/2) and you need to generate your service from the protobuf.
 
 In my opinion : 
 
-- GraphQL must be better for external exposition like for mobile, open API, surely other case.
-- gRPC must be better for internal communication like in cloud, with defined client, in K8s Cluster, in information system...
+- GraphQL may be better for external exposition like for mobile, open API, surely other case.
+- gRPC may be better for internal communication like in cloud, with defined client, in K8s Cluster, in information system...
 
 Of course, it can depend on your use. Maybe this article can help you to choose.

@@ -6,6 +6,7 @@ import fr.jufab.database.dto.Person;
 import fr.jufab.database.repositories.AddressRepository;
 import fr.jufab.database.repositories.PersonRepository;
 import fr.jufab.grpc.proto.PersonServiceGrpc;
+import fr.jufab.grpc.proto.PersonToSave;
 import fr.jufab.grpc.proto.PersonWithAddressToSave;
 import fr.jufab.grpc.proto.QueryPerson;
 import io.grpc.stub.StreamObserver;
@@ -77,8 +78,7 @@ public class PersonGrpcService extends PersonServiceGrpc.PersonServiceImplBase {
       complete(responseObserver, buildPersonGrpc(personRepository.createPerson(
           new Person(request.getFirstname(), request.getLastname(), request.getAge(),
               new Address(request.getStreet(), request.getZipCode(), request.getCity()),
-              Gender.MAN.equals(request.getGender()) ? Gender.MAN
-                  : Gender.WOMAN)).get()));
+              Gender.valueOf(request.getGender().name()))).get()));
     } catch (InterruptedException e) {
       LOGGER.log(Level.SEVERE, "Error", e);
     } catch (ExecutionException e) {
@@ -100,7 +100,7 @@ public class PersonGrpcService extends PersonServiceGrpc.PersonServiceImplBase {
         .setFirstname(person.getFirstname())
         .setLastname(person.getLastname())
         .setAge(person.getAge())
-        .setGender(buildGender(person.getGender()))
+        .setGender(fr.jufab.grpc.proto.Gender.valueOf(person.getGender().name()))
         .build();
   }
 
@@ -120,10 +120,5 @@ public class PersonGrpcService extends PersonServiceGrpc.PersonServiceImplBase {
         .setZipCode(address.getZipCode())
         .setCity(address.getCity())
         .build();
-  }
-
-  private fr.jufab.grpc.proto.Gender buildGender(Gender gender) {
-    return gender.compareTo(Gender.MAN) == 0 ? fr.jufab.grpc.proto.Gender.MAN
-        : fr.jufab.grpc.proto.Gender.WOMAN;
   }
 }

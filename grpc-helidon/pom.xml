@@ -51,6 +51,11 @@
             <groupId>io.helidon.grpc</groupId>
             <artifactId>helidon-grpc-server</artifactId>
         </dependency>
+        <dependency>
+            <groupId>io.helidon.grpc</groupId>
+            <artifactId>helidon-grpc-client</artifactId>
+            <scope>test</scope>
+        </dependency>
         <!-- //end -->
         <dependency>
             <groupId>io.helidon.logging</groupId>
