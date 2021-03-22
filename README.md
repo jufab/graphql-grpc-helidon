@@ -14,17 +14,23 @@ _Why Helidon?_ **Why not!** ...seriously, because this framework offers the poss
 
 - [About Helidon](#about-helidon)
 - [Use case](#use-case)
-  - [Definition](#definition)
-  - [Helidon DB Client](#helidon-db-client)
+  + [Definition](#definition)
+  + [Helidon DB Client](#helidon-db-client)
 - [Init Project](#init-project)
 - [GraphQL](#graphql)
-  - [Schema](#schema)
-  - [Maven](#maven)
-  - [Implementation](#implementation)
+  + [Schema](#schema)
+  + [Maven](#maven)
+  + [Implementation](#implementation)
+    - [Server](#server)
+    - [DataFetcher](#datafetcher)
+  + [Test](#test)
 - [gRPC](#grpc)
-  - [Protocol buffers](#protocol-buffers)
-  - [Maven](#maven)
-  - [Implementation](#implementation)
+  + [Protocol buffers](#protocol-buffers)
+  + [Maven](#maven-1)
+  + [Implementation](#implementation-1)
+    - [Server](#server-1)
+    - [Service](#service)
+  + [Test](#test-1)
 - [Conclusion](#conclusion)
 
 ## About Helidon
@@ -293,6 +299,23 @@ public DataFetcher<Person> createPersonWithAddress() {
 ```
 
 _More information about DataFetching => https://www.graphql-java.com/documentation/v16/data-fetching/_
+
+### Test
+
+For testing resources, I use [insomnia](https://insomnia.rest/). 
+
+You can access GraphQL requests like that,
+
+![schema](assets/graphql/insomnia-graphql.png)
+
+view schema information,
+
+![schema](assets/graphql/insomnia-graphql-schema.png)
+
+and do some requests.
+
+![schema](assets/graphql/insomnia-graphql-request.png)
+
 
 And that's it for GraphQL...
 
@@ -568,6 +591,26 @@ For method "persons" in [PersonGrpcService](grpc-helidon/src/main/java/fr/jufab/
   }
 ```
 You can see all implementation in [PersonGrpcService](grpc-helidon/src/main/java/fr/jufab/grpc/service/PersonGrpcService.java) and [AddressGrpcService](grpc-helidon/src/main/java/fr/jufab/grpc/service/AddressGrpcService.java)
+
+### Test
+
+For testing gRPC services, I use [insomnia](https://insomnia.rest/) too.
+
+You can access gRPC services like that,
+
+![schema](assets/grpc/insomnia-grpc.png)
+
+load protobuf file,
+
+![schema](assets/grpc/insomnia-grpc-proto.png)
+
+select your service to test after adding url,
+
+![schema](assets/grpc/insomnia-grpc-service.png)
+
+and use it.
+
+![schema](assets/grpc/insomnia-grpc-create.png)
 
 That's it for gRPC.
 
